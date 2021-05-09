@@ -16,6 +16,7 @@ background-color: #008B8B;
 <body>
 
 <form action="save_register.php" method="POST">
+
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
   
   <center><table width="500" border="1" style="width: 500px" class="table table-bordered">

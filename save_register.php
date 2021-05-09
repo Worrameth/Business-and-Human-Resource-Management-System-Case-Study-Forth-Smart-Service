@@ -24,8 +24,9 @@ include('connect.php');
 	if($result){
 	echo "<script type='text/javascript'>";
 	echo "alert('Register Succesfuly');";
-	echo "window.location = 'register.php'; ";
+	echo "window.location = 'employee.php'; ";
 	echo "</script>";
+	
 	}
 	else{
 	echo "<script type='text/javascript'>";
