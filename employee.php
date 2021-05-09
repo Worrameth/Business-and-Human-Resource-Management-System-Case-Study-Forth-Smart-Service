@@ -36,21 +36,22 @@ background-color: #008B8B;
                         <th>แผนก</th>
                         <th>เบอร์มือถือ</th>
                         <th>อีเมล์</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                  while ($row = mysqli_fetch_array($result)) {
+                  while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                <td><?=$row['userid'];?></td>
-                <td><?=$row['username'];?></td>
-                <td><?=$row['name'];?></td>
-                <td><?=$row['department'];?></td>
-                <td><?=$row['phone'];?></td>
-                <td><?=$row['email'];?></td>
-                <td><a href="employee_edit.php?id=<?php echo $row["userid"]; ?>">แก้ไข</a>
-                <a href="employee_delete.php?id=<?php echo $row["userid"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
+                <td><?=$_REQUEST['userid'];?></td>
+                <td><?=$_REQUEST['username'];?></td>
+                <td><?=$_REQUEST['name'];?></td>
+                <td><?=$_REQUEST['department'];?></td>
+                <td><?=$_REQUEST['phone'];?></td>
+                <td><?=$_REQUEST['email'];?></td>
+                <td><a href="employee_edit.php?id=<?php echo $_REQUEST['userid']; ?>">แก้ไข</a>
+                <a href="employee_delete.php?id=<?php echo $_REQUEST["userid"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
                 </tr>
                 <?php
                 }
@@ -61,24 +62,6 @@ background-color: #008B8B;
                             </table>
                         </div>
                     </div>
-                
-                    <!-- js -->
-                    <script>
-                        $(document).ready(function()
-                        {
-                            setTimeout(function()
-                            {
-                                $('#update').hide();
-                            },3000);
-                        });
-                
-                        $(document).ready(function()
-                        {
-                            setTimeout(function()
-                            {
-                                $('#delete').hide();
-                            },3000);
-                        });
 }
 </body>
 </html>

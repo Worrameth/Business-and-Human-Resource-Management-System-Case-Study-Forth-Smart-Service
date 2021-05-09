@@ -8,3 +8,4 @@ if (mysqli_query($objCon, $sql)) {
     $delete = "Error deleting record: " . mysqli_error($objCon);
 }
 mysqli_close($objCon);
+?>
