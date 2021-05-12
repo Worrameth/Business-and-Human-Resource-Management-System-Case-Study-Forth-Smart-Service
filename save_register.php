@@ -3,22 +3,21 @@ include('connect.php');
     $username = $_REQUEST["username"];
     $name = $_REQUEST["name"];
 		$password = $_REQUEST["password"];
-		$department = $_REQUEST["department"];
+		$departmentId = $_REQUEST["departmentId"];
     $email = $_REQUEST["email"];
 		$phone = $_REQUEST["phone"];
-		//$status = $_POST["status"];
-
+		//$role = $_POST["role"];
 	
 	//เพิ่มเข้าไปในฐานข้อมูล
-	$sql = "INSERT INTO employee(username,name,password,department,email,phone)
-			 VALUES('$username','$name','$password','$department','$email','$phone')";
+	$sql = "INSERT INTO employee(username,name,password,departmentId,email,phone)
+			 VALUES('$username','$name','$password','$departmentId','$email','$phone')";
 
 
 
-	$result = mysqli_query($objCon, $sql) or die ("Error in query: $sql " . mysqli_error());
+	$result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database
-	mysqli_close($objCon);
+	mysqli_close($conn);
 	//จาวาสคริปแสดงข้อความเมื่อบันทึกเสร็จและกระโดดกลับไปหน้าฟอร์ม
 	
 	if($result){

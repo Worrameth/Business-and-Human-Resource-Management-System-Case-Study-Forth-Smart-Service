@@ -44,13 +44,13 @@ background-color: #008B8B;
         <td>
           <select name="department" id="department" class="btn dropdown-toggle" data-toggle="dropdown">
             <option value="" selected><?=$department;?></option>
-            <option value="account">บัญชี</option>
-            <option value="finance">การเงิน</option>
-            <option value="humanresources">ฝ่ายบุคคล</option>
-            <option value="marketing">การตลาด</option>
-            <option value="management">การจัดการ</option>
-            <option value="sale">ฝ่ายขาย</option>
-            <option value="service">บริการ</option>
+            <option value="1">บัญชี</option>
+            <option value="2">การเงิน</option>
+            <option value="3">ฝ่ายบุคคล</option>
+            <option value="4">การตลาด</option>
+            <option value="5">การจัดการ</option>
+            <option value="6">ฝ่ายขาย</option>
+            <option value="7">บริการ</option>
           </select>
         </td>
         <tr>

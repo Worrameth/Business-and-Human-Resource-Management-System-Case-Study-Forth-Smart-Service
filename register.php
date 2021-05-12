@@ -40,15 +40,9 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="department" id="department" class="btn dropdown-toggle" data-toggle="dropdown">
+          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown">
             <option value="" selected>--------- เลือกแผนก ---------</option>
-            <option value="account">บัญชี</option>
-            <option value="finance">การเงิน</option>
-            <option value="humanresources">ฝ่ายบุคคล</option>
-            <option value="marketing">การตลาด</option>
-            <option value="management">การจัดการ</option>
-            <option value="sale">ฝ่ายขาย</option>
-            <option value="service">บริการ</option>
+            
           </select>
         </td>
         <tr>

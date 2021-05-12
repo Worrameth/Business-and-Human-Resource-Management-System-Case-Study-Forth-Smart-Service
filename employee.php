@@ -2,7 +2,7 @@
 include_once 'connect.php';
 $update = '';
 $delete = '';
-$result = mysqli_query($objCon, "SELECT * FROM employee");
+$result = mysqli_query($conn, "SELECT * FROM employee");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,7 @@ background-color: #008B8B;
                         <th>แผนก</th>
                         <th>เบอร์มือถือ</th>
                         <th>อีเมล์</th>
+                        <th>ตำแหน่ง</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -47,16 +48,17 @@ background-color: #008B8B;
                 <td><?=$_REQUEST['userid'];?></td>
                 <td><?=$_REQUEST['username'];?></td>
                 <td><?=$_REQUEST['name'];?></td>
-                <td><?=$_REQUEST['department'];?></td>
+                <td><?=$_REQUEST['departmentId'];?></td>
                 <td><?=$_REQUEST['phone'];?></td>
                 <td><?=$_REQUEST['email'];?></td>
+                <td><?=$_REQUEST['role'];?></td>
                 <td><a href="employee_edit.php?id=<?php echo $_REQUEST['userid']; ?>">แก้ไข</a>
                 <a href="employee_delete.php?id=<?php echo $_REQUEST["userid"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
                 </tr>
                 <?php
                 }
                 // close connection database
-                mysqli_close($objCon);
+                mysqli_close($conn);
                 ?>
                                 </tbody>
                             </table>
