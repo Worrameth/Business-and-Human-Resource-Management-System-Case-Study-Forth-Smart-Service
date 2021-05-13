@@ -1,5 +1,5 @@
 <?php
-include_once 'connect.php';
+include_once '../connect.php';
 $id = $_GET["id"];
 $res = mysqli_query($conn, "select * from employee where userid = '$id'");
 while ($_REQUEST = mysqli_fetch_array($res)) {

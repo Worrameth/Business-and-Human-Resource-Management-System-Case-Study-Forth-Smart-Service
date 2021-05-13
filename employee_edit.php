@@ -42,15 +42,17 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="department" id="department" class="btn dropdown-toggle" data-toggle="dropdown">
-            <option value="" selected><?=$department;?></option>
-            <option value="1">บัญชี</option>
-            <option value="2">การเงิน</option>
-            <option value="3">ฝ่ายบุคคล</option>
-            <option value="4">การตลาด</option>
-            <option value="5">การจัดการ</option>
-            <option value="6">ฝ่ายขาย</option>
-            <option value="7">บริการ</option>
+          <select name="departmentName" id="departmentName" class="btn dropdown-toggle" data-toggle="dropdown">
+            <option value="" selected><?=$departmentName;?></option>
+            <?php
+            include('connect.php');
+            $sqli = "SELECT * FROM department";
+            $result = mysqli_query($conn, $sqli);
+            while ($row = mysqli_fetch_array($result)) {
+              echo '<option>'.$row['departmentName'].'</option>';
+            }  
+              echo '</select>'; 
+            ?>
           </select>
         </td>
         <tr>

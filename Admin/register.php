@@ -43,7 +43,7 @@ background-color: #008B8B;
           <select name="departmentName" id="departmentName" class="btn dropdown-toggle" data-toggle="dropdown">
           <option value="" selected>-----เลือกแผนก-----</option>
           <?php
-            include('connect.php');
+            include('../connect.php');
             $sqli = "SELECT * FROM department";
             $result = mysqli_query($conn, $sqli);
             while ($row = mysqli_fetch_array($result)) {

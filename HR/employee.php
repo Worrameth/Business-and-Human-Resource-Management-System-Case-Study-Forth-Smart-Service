@@ -1,5 +1,12 @@
 <?php
-include_once 'connect.php';
+include_once '../connect.php';
+
+if (!$_SESSION["username"]){  //check session
+    
+    Header("Location: ../index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form 
+
+}else{
+
 $result = mysqli_query($conn, "SELECT * FROM employee");
 ?>
 <!DOCTYPE html>
@@ -60,6 +67,7 @@ background-color: #008B8B;
                             </table>
                         </div>
                     </div>
-}
+<a href="logout.php">Log out</a></strong></p>
 </body>
 </html>
+<?php }?>

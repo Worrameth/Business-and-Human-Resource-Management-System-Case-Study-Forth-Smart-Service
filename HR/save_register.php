@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+include('../connect.php');
     $username = $_REQUEST["username"];
     $name = $_REQUEST["name"];
 		$password = $_REQUEST["password"];
