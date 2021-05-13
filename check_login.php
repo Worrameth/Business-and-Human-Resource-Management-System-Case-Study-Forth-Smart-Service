@@ -20,13 +20,9 @@
 			$_SESSION["username"] = $objResult["username"];
 			$_SESSION["phone"] = $objResult["phone"];
 			$_SESSION["department"] = $objResult["department"];
-			if($objResult["role"] == "Admin")
+			if($objResult["role"] == "HR")
 			{
-				header("location:Admin/employee.php");
-			}
-			elseif($objResult["role"] == "HR")
-			{
-				header("location:HR/employee.php");
+				header("location:HR/index.php");
 			}
 			elseif($objResult["role"] == "Manager")
 			{
