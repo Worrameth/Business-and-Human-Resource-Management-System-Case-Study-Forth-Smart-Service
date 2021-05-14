@@ -14,10 +14,10 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
+    <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet"/>
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+    
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">    
@@ -27,12 +27,8 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/custom.css">
-
-<style>
-
-</style>
-
 </head>
+
 <body style="font-family: 'Prompt', sans-serif;">
     <!-- Start header -->
     <header class="top-navbar">
@@ -68,16 +64,14 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
     <br>
     <br>
     <br>
-
 <div class="container">
         <form method="post" action="excel.php">
             <input type="submit" name="excel" class="btn btn-success" value="Excel"/>
-        </form>
+        </form></p>
         <div class="container-fluid">
-        <a href="index.php" >กลับไปหน้าหลัก</a>
-        <a href="register.php">เพิ่มพนักงาน</a>
-        <div><h5>ข้อมูลพนักงาน</h5></div>
-            <table id="tableHorizontalWrapper" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
+        <a href="register.php">เพิ่มพนักงาน</a></br>
+        <div>ข้อมูลพนักงาน</div>
+            <table id="employeeTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
                 <thead>
                     <tr>
                         <th>รหัสพนักงาน</th>
@@ -116,20 +110,13 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
     </div>
 </footer>
 	<!-- End Footer -->
-	
-
-	<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-	<script src="js/jquery.superslides.min.js"></script>
-	<script src="js/images-loded.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-	<script src="js/baguetteBox.min.js"></script>
-	<script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#employeeTable').DataTable();
+        });
+    </script>
 
 </body>
 </html>

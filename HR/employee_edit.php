@@ -3,21 +3,31 @@ include_once 'employee_edit_save.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"><!-- Basic -->
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Itim&display=swap" rel="stylesheet">
-  <title>แก้ไขข้อมูลพนักงาน</title>
-</head>
-<style type="text/css">
- body {
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="../css/styleindex.css">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+
+<style>
+body {
 background-color: #008B8B;
  font-family: 'Itim', cursive;
  }
 </style>
-<body>
+<body style="font-family: 'Prompt', sans-serif;">
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
 <h5 class="text-center text-success" id="update"></h5>
 <form action="employee_edit_save.php?id=<?php echo $id;?>" method="post">  
