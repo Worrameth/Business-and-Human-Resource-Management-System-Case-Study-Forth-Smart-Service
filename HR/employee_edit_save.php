@@ -6,16 +6,16 @@ while ($_REQUEST = mysqli_fetch_array($res)) {
   $username = $_REQUEST["username"];
   $name = $_REQUEST["name"];
   $password = $_REQUEST["password"];
-  $department = $_REQUEST["departmentName"];
+  $departmentName = $_REQUEST["departmentName"];
   $email = $_REQUEST["email"];
   $phone = $_REQUEST["phone"];
 }
 if (isset($_POST["save"])) {
-  $sql = "UPDATE employee SET password='$_POST[password]', name = '$_POST[name]', departmentId = '$_POST[departmentId]', phone = '$_POST[phone]', email = '$_POST[email]' WHERE userid = $id";
+  $sql = "UPDATE employee SET password='$_POST[password]', name = '$_POST[name]', departmentName = '$_POST[departmentName]', phone = '$_POST[phone]', email = '$_POST[email]' WHERE userid = $id";
   $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database
-	mysqli_close($objCon);
+	mysqli_close($conn);
 	//จาวาสคริปแสดงข้อความเมื่อบันทึกเสร็จและกระโดดกลับไปหน้าฟอร์ม
 	
 	if($result){

@@ -10,24 +10,71 @@ if (!$_SESSION["username"]){  //check session
 $result = mysqli_query($conn, "SELECT * FROM employee");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"><!-- Basic -->
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Itim&display=swap" rel="stylesheet">
-  <title>ข้อมูลพนักงาน</title>
-</head>
-<style type="text/css">
- body {
-background-color: #008B8B;
- font-family: 'Itim', cursive;
- }
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="../css/styleindex.css">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+
+<style>
+
 </style>
-<body>
+
+</head>
+<body style="font-family: 'Prompt', sans-serif;">
+    <!-- Start header -->
+    <header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">
+					<!-- <img src="img/logo.png" alt="" /> -->
+					<img src="../img/logo.png" width="130" height="130"  alt="" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
+						<li class="nav-item"><a class="nav-link" href="">เพิ่มกำหนดการ</a></li>
+						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
+						<li class="nav-item"><a class="nav-link" >Hi, <?php echo $_SESSION['username'];?></a></li>
+      			<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 <div class="container">
+        <form method="post" action="excel.php">
+            <input type="submit" name="excel" class="btn btn-success" value="Excel"/>
+        </form>
         <div class="container-fluid">
-        <a href="index.php">กลับไปหน้าหลัก</a>
+        <a href="index.php" >กลับไปหน้าหลัก</a>
         <a href="register.php">เพิ่มพนักงาน</a>
         <div><h5>ข้อมูลพนักงาน</h5></div>
             <table id="tableHorizontalWrapper" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
@@ -63,11 +110,27 @@ background-color: #008B8B;
                 // close connection database
                 mysqli_close($conn);
                 ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-<a href="logout.php">Log out</a></strong></p>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</footer>
+	<!-- End Footer -->
+	
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+
 </body>
 </html>
 <?php }?>

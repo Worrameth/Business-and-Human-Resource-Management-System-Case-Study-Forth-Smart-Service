@@ -42,8 +42,8 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="department" id="department" class="btn dropdown-toggle" data-toggle="dropdown">
-            <option value="" selected><?=$department;?></option>
+          <select name="departmentName" id="departmentName" class="btn dropdown-toggle" data-toggle="dropdown">
+            <option value=<?=$departmentName;?> selected><?=$departmentName;?></option>
             <?php
             include('connect.php');
             $sqli = "SELECT * FROM department";
