@@ -47,8 +47,8 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
 						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
 						<li class="nav-item"><a class="nav-link" href="">เพิ่มกำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
-						<li class="nav-item"><a class="nav-link" >Hi, <?php echo $_SESSION['username'];?></a></li>
-      			<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
+      			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -113,6 +113,7 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
+
         $(document).ready(function() {
             $('#employeeTable').DataTable();
         });

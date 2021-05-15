@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2021 at 04:39 PM
+-- Generation Time: May 15, 2021 at 06:04 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -83,8 +83,9 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentName`, `phone`, `email`, `address`, `birthday`, `role`) VALUES
 (20, 'Admin', 'Admin Admin', 'Admin', 'IT', '1234567890', '1234@gmail.com', NULL, NULL, 'HR'),
-(22, 'Worrameth', 'Worrameth Manajit', '1234', 'IT', '0954409779', '1234@gmail.com', NULL, NULL, NULL),
-(23, 'Manager', 'Manager Manager', '1234', 'Management', '1234567890', '1234@gmail.com', NULL, NULL, 'Manager');
+(22, 'Worrameth', 'Worrameth Manajit1234', '1234', 'IT', '0954409779', '1234@gmail.com', NULL, NULL, NULL),
+(23, 'Manager', 'Manager Manager', '1234', 'Management', '1234567890', '1234@gmail.com', NULL, NULL, 'Manager'),
+(24, '1234', '123 123', '1234', 'E-Commerce', '1234567890', '1234@gmail.com', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -157,7 +158,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `leave_type`

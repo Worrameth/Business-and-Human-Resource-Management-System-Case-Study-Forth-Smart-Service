@@ -46,8 +46,8 @@ if (!$_SESSION["username"]){  //check session
 						<li class="nav-item"><a class="nav-link" href="">เพิ่มกำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
 						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
-						<li class="nav-item"><a class="nav-link" >Hi, <?php echo $_SESSION['username'];?></a></li>
-      			<li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
+      			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,21 +58,7 @@ if (!$_SESSION["username"]){  //check session
 
 		
 	</footer>
-	<!-- End Footer -->
 	
-
-	<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-	<script src="js/jquery.superslides.min.js"></script>
-	<script src="js/images-loded.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-	<script src="js/baguetteBox.min.js"></script>
-	<script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
 </body>
 </html>
 <?php }?>

@@ -10,7 +10,7 @@
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">    
-	<!-- Site CSS -->
+	  <!-- Site CSS -->
     <link rel="stylesheet" href="../css/styleindex.css">    
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="../css/responsive.css">
