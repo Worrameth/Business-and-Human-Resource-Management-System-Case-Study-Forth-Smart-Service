@@ -1,14 +1,30 @@
 <?php
 include_once '../connect.php';
+$strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
+$objQuery = mysqli_query($conn,$strSQL);
+$objResult = mysqli_fetch_array($objQuery);
+if(!$objResult)
+	{
+		echo "<script language=\"JavaScript\">";
+		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
+		echo "</script>";
+	}
+$_SESSION["username"] = $objResult["username"];
+$_SESSION["phone"] = $objResult["phone"];
+$_SESSION["departmentName"] = $objResult["departmentName"];
+$_SESSION["role"] = $objResult["role"];
+if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
+	if($_SESSION["role"] == 'Manager'){
+		Header("Location: ../Manager/index.php");
+	}
+	elseif($_SESSION["role"] == 'Employee'){
+		Header("Location: ../Employee/index.php");
+	}
+	else{
+		Header("Location: ../index.php");
+	}
+}else{ ?>
 
-if (!$_SESSION["username"]){  //check session
-    
-    Header("Location: ../index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form 
-
-}else{
-
-$result = mysqli_query($conn, "SELECT * FROM employee");
-?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -86,7 +102,8 @@ $result = mysqli_query($conn, "SELECT * FROM employee");
                 </thead>
                 <tbody>
                 <?php
-                  while ($_REQUEST = mysqli_fetch_array($result)) {
+                    $result = mysqli_query($conn, "SELECT * FROM employee");
+                    while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
                 <td><?=$_REQUEST['userid'];?></td>

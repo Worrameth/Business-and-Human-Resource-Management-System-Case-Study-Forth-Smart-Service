@@ -19,7 +19,7 @@
 	{
 			$_SESSION["username"] = $objResult["username"];
 			$_SESSION["phone"] = $objResult["phone"];
-			$_SESSION["department"] = $objResult["department"];
+			$_SESSION["departmentName"] = $objResult["departmentName"];
 			if($objResult["role"] == "HR")
 			{
 				header("location:HR/index.php");
