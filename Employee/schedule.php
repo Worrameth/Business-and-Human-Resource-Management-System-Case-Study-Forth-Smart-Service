@@ -1,11 +1,31 @@
 <?php
 include_once '../connect.php';
-
-if (!$_SESSION["username"]){  //check session
-    
-    Header("Location: ../index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form 
-
+$result = mysqli_query($conn, "SELECT * FROM employee");
+$strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
+$objQuery = mysqli_query($conn,$strSQL);
+$objResult = mysqli_fetch_array($objQuery);
+if(!$objResult)
+	{
+		echo "<script language=\"JavaScript\">";
+		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
+		echo "</script>";
+	}
+$_SESSION["username"] = $objResult["username"];
+$_SESSION["phone"] = $objResult["phone"];
+$_SESSION["departmentName"] = $objResult["departmentName"];
+$_SESSION["role"] = $objResult["role"];
+if (!$_SESSION["username"] || $_SESSION["role"] != "Manager"){  //check session
+	if($_SESSION["role"] == 'Employee'){
+		Header("Location: ../Employee/index.php");
+	}
+	elseif($_SESSION["role"] == 'HR'){
+		Header("Location: ../HR/index.php");
+	}
+	else{
+		Header("Location: ../index.php");
+	}
 }else{ ?>
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>

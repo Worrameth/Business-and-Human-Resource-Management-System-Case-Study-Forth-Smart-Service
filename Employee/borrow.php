@@ -1,10 +1,29 @@
 <?php
 include_once '../connect.php';
-
-if (!$_SESSION["username"]){  //check session
-    
-    Header("Location: ../index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form 
-
+$result = mysqli_query($conn, "SELECT * FROM employee");
+$strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
+$objQuery = mysqli_query($conn,$strSQL);
+$objResult = mysqli_fetch_array($objQuery);
+if(!$objResult)
+	{
+		echo "<script language=\"JavaScript\">";
+		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
+		echo "</script>";
+	}
+$_SESSION["username"] = $objResult["username"];
+$_SESSION["phone"] = $objResult["phone"];
+$_SESSION["departmentName"] = $objResult["departmentName"];
+$_SESSION["role"] = $objResult["role"];
+if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
+	if($_SESSION["role"] == 'Manager'){
+		Header("Location: ../Manager/index.php");
+	}
+	elseif($_SESSION["role"] == 'HR'){
+		Header("Location: ../HR/index.php");
+	}
+	else{
+		Header("Location: ../index.php");
+	}
 }else{ ?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
@@ -44,7 +63,7 @@ if (!$_SESSION["username"]){  //check session
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="borrow.php">ยืม - อุปกรณ์</a></li>
 						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="schedule.php">กำหนดการ</a></li>
+						<li class="nav-item"><a class="nav-link" href="news.php">กำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="leave.php">แจ้งลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>

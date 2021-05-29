@@ -14,7 +14,7 @@ include('../connect.php');
 
 
 
-	$result = mysqli_query($conn, $sql);
+	$result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database
 	mysqli_close($conn);
@@ -25,11 +25,11 @@ include('../connect.php');
 	echo "alert('Register Succesfuly');";
 	echo "window.location = 'employee.php'; ";
 	echo "</script>";
+	
 	}
 	else{
 	echo "<script type='text/javascript'>";
 	echo "alert('Error back to register again');";
-	echo "window.location = 'register.php'; ";
 	echo "</script>";
 }
 ?>

@@ -11,7 +11,7 @@ if(!$objResult)
 	}
 $_SESSION["username"] = $objResult["username"];
 $_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
+$_SESSION["departmentId"] = $objResult["departmentId"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -61,7 +61,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="">เพิ่มกำหนดการ</a></li>
+						<li class="nav-item"><a class="nav-link" href="news.php">เพิ่มกำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
 						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>

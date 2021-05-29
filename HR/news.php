@@ -12,7 +12,7 @@ if(!$objResult)
 	}
 $_SESSION["username"] = $objResult["username"];
 $_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
+$_SESSION["departmentId"] = $objResult["departmentId"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -25,11 +25,13 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 		Header("Location: ../index.php");
 	}
 }else{ ?>
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet"/>   
    
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,14 +39,12 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">    
-	<!-- Site CSS -->
+	  <!-- Site CSS -->
     <link rel="stylesheet" href="../css/styleindex.css">    
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/custom.css">
-
-
 </head>
 
 <body style="font-family: 'Prompt', sans-serif;">
@@ -52,7 +52,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="index.php">
 					<!-- <img src="img/logo.png" alt="" /> -->
 					<img src="../img/logo.png" width="130" height="130"  alt="" />
 				</a>
@@ -61,11 +61,10 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูแลรายรับรายจ่าย</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูประวัติการลางานทั้งหมด</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูประวัติการยืม - คืนอุปกรณ์ทั้งหมด</a></li>
-            <li class="nav-item"><a class="nav-link" href="">ดูประวัติการเช็คอิน - เช็คเอ้าท์ทั้งหมด</a></li>
+						<li class="nav-item active"><a class="nav-link" href="news.php">เพิ่มกำหนดการหน้าหลัก</a></li>
+						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
+						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
@@ -74,11 +73,42 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 		</nav>
 	</header>
 	<!-- End header -->
-	
-
-		
-	</footer>
-	
+  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+  <center><table width="500" border="1" style="width: 500px" class="table table-bordered">
+    <tbody>
+      <tr>
+        <br><a style="text-align: center;"><h2>เพิ่มกำหนดการ</h2><br></a>
+        <td width="130">&nbsp;รูปภาพ</td>
+        <td width="150">
+          <input name="username" class="form-control" type="text" id="username" size="20" placeholder="Import รูปภาพใส่กล่อง" required></td>
+      </tr>
+      <tr>
+        <td> &nbsp;หัวข้อความข่าวสาร</td>
+        <td><input name="password" type="password" class="form-control" id="password" placeholder="จะไปอยู่ในส่วนหัวข้อข่าวสาร" required></td>
+      </tr>
+      <tr>
+        <td>&nbsp;ลิงค์ที่ไปยังไฟล์ PDF</td>
+        <td><input name="name" class="form-control" type="text" id="name" size="35" placeholder="Import ไฟล์PDF หรือลิงค์ที่เชื่อมไป" required></td>
+      </tr>
+      <tr>
+        
+    </tbody>
+  </table>
+        <br>
+          <center><button type="submit" class="btn btn-info" style="width: 90px;">บันทึก</button>
+          <button type="reset" class="btn btn-secondary">ล้างข้อมูล</button>
+          <a href="employee.php" class="btn btn-secondary" role="button">ยกเลิก</a>
+</form>
+</div>
 </body>
 </html>
 <?php }?>
