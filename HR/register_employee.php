@@ -10,8 +10,6 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -75,14 +73,14 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="departmentName" id="departmentName" class="btn dropdown-toggle" data-toggle="dropdown" required>
+          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown" required>
           <option value="" selected>-----เลือกแผนก-----</option>
           <?php
             include('../connect.php');
             $sqli = "SELECT * FROM department";
             $result = mysqli_query($conn, $sqli);
             while ($row = mysqli_fetch_array($result)) {
-              echo '<option>'.$row['departmentName'].'</option>';
+              echo '<option value="'.$row["departmentId"].'">'.$row["departmentName"].'</option>';
             }  
               echo '</select>'; 
           ?>

@@ -10,8 +10,6 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -72,11 +70,22 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 		</nav>
 	</header>
 	<!-- End header -->
-	
-
-		
 	</footer>
-	
+	<?php
+    $sql = $conn->query("SELECT * FROM news ORDER BY newsId DESC Limit 3");
+    while($row=$sql->fetch_assoc()){
+  ?>
+  <div class="col-lg-4 col-md-6 mb-4">
+  <div class="card h-100">
+    <a href=uploads/<?=$row['filename'];?> download><img style="width:100%; height:200px" class="card-img-top" src="../HR/uploads/<?php echo$row['image']; ?>" alt=""></a>
+    <div class="card-body">
+      <h4 class="card-title">
+        <a href="view_detail.php?id_product=<?php echo$row['newsId']; ?>"><?php echo$row['headline']; ?></a>
+      </h4>
+    </div>
+  </div>
+  </div>
+  <?php } ?>
 </body>
 </html>
 <?php }?>

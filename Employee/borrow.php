@@ -11,8 +11,6 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	if($_SESSION["role"] == 'Manager'){

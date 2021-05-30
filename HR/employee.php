@@ -11,7 +11,6 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -85,7 +84,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
             <input type="submit" name="excel" class="btn btn-success" value="Excel"/>
         </form></p>
         <div class="container-fluid">
-        <a href="register.php">เพิ่มพนักงาน</a></br>
+        <a href="register_employee.php">เพิ่มพนักงาน</a></br>
         <div>ข้อมูลพนักงาน</div>
             <table id="employeeTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
                 <thead>

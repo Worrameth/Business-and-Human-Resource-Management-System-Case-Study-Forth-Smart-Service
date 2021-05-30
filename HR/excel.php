@@ -4,7 +4,7 @@ require_once '../connect.php';
 $output = '';
 if(isset($_POST["excel"]))
 {
- $query = "SELECT * FROM employee";
+ $query = "SELECT userid,username,name,depart.departmentName,phone,email,role FROM employee AS emp INNER JOIN department as depart ON emp.departmentId = depart.departmentId";
  $result = mysqli_query($conn, $query);
  if(mysqli_num_rows($result) > 0)
  {

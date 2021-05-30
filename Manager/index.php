@@ -11,10 +11,8 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
 $_SESSION["role"] = $objResult["role"];
-if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
+if (!$_SESSION["username"] || $_SESSION["role"] != "Manager"){  //check session
 	if($_SESSION["role"] == 'Manager'){
 		Header("Location: ../Manager/index.php");
 	}

@@ -3,14 +3,14 @@ include('../connect.php');
     $username = $_REQUEST["username"];
     $name = $_REQUEST["name"];
 		$password = $_REQUEST["password"];
-		$departmentName = $_REQUEST["departmentName"];
+		$departmentId = $_REQUEST["departmentId"];
     $email = $_REQUEST["email"];
 		$phone = $_REQUEST["phone"];
 		//$role = $_POST["role"];
 	
 	//เพิ่มเข้าไปในฐานข้อมูล
-	$sql = "INSERT INTO employee(username,name,password,departmentName,email,phone)
-			 VALUES('$username','$name','$password','$departmentName','$email','$phone')";
+	$sql = "INSERT INTO employee(username,name,password,departmentId,email,phone)
+			 VALUES('$username','$name','$password','$departmentId','$email','$phone')";
 
 
 

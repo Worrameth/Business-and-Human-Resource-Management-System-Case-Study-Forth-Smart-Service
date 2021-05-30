@@ -11,8 +11,6 @@ if(!$objResult)
 		echo "</script>";
 	}
 $_SESSION["username"] = $objResult["username"];
-$_SESSION["phone"] = $objResult["phone"];
-$_SESSION["departmentName"] = $objResult["departmentName"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	if($_SESSION["role"] == 'Manager'){
@@ -91,7 +89,6 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	<div class="menu-box">
 		<div class="container">
 			<div class="row">
-				
 			</div>
 			
 			<div class="row inner-menu-box">
@@ -99,7 +96,31 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					</div>
 				</div>
-				
+				<?php
+				$sql = $conn->query("SELECT * FROM news ORDER BY newsId DESC Limit 3");
+				while($row=$sql->fetch_assoc()){
+				?>
+				<div class="col-9">
+					<div class="tab-content" id="v-pills-tabContent">
+						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+							<div class="row">
+								
+								<div class="col-lg-4 col-md-6 special-grid drinks">
+									<div class="gallery-single fix">
+										<a href=uploads/<?=$row['filename'];?> download><img style="width:100%; height:200px" class="card-img-top" src="../HR/uploads/<?php echo$row['image']; ?>" alt=""></a>
+										<div class="why-text">
+											<h4></h4>
+											<p href="view_detail.php?id_product=<?php echo$row['newsId']; ?>"><?php echo$row['headline']; ?></p>
+											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>				
+				<?php } ?>
 				<div class="col-9">
 					<div class="tab-content" id="v-pills-tabContent">
 						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
