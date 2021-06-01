@@ -57,9 +57,9 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="news.php">เพิ่มกำหนดการ</a></li>
+						<li class="nav-item active"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
 						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="news.php">เพิ่มกำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="">จัดการการลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
@@ -80,32 +80,36 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
     <br>
 <div class="container">
         <div class="container-fluid">
-        <a href="register_news.php">เพิ่มข่าวสาร</a></br>
-        <div>ข้อมูลข่าวสาร</div>
-            <table id="newsTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
+        <a href="leave.php">แจ้งลาหยุด</a></br>
+        <div>ข้อมูลการลาหยุด</div>
+            <table id="employeeTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
                 <thead>
                     <tr>
-                        <th>วันที่/เวลา</th>
-                        <th>หัวข้อข่าวสาร</th>
-                        <th>รูป</th>
-                        <th>ไฟล์ PDF</th>
-                        <th>รหัสข่าว</th>
+                        <th>รหัสลาหยุด</th>
+                        <th>ชื่อผู้ใช้งาน</th>
+                        <th>ประเภทการลาป่วย</th>
+                        <th>ตั้งแต่ที่วันที่</th>
+                        <th>ถึงวันที่</th>
+                        <th>ลายละเอียดการลา</th>
+                        <th>สถานะการลา</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT * FROM news");
+                  $result = mysqli_query($conn, "SELECT leaveId, employee.userId,employee.username, leave_type.leaveTypeName, leave_from, leave_to, leave_description, leave_status.leaveStatusId, leave_status.leaveStatusName  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.leaveStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                <td><?=$_REQUEST['upload_time'];?></td>
-                <td><?=$_REQUEST['headline'];?></td>
-                <td><?php echo "<img src=uploads/".$_REQUEST['image']." height=100 width=100 />"; ?></td>
-                <td><a href=uploads/<?=$_REQUEST['filename'];?> download><?=$_REQUEST['filename'];?></a></td>
-                <td><?=$_REQUEST['newsId'];?></td>
-                <td><a href="news_edit.php?id=<?php echo $_REQUEST['newsId']; ?>">แก้ไข</a>
-                <a href="news_delete.php?id=<?php echo $_REQUEST["newsId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
+                <td><?=$_REQUEST['leaveId'];?></td>
+                <td><?=$_REQUEST['username'];?></td>
+                <td><?=$_REQUEST['leaveTypeName'];?></td>
+                <td><?=$_REQUEST['leave_from'];?></td>
+                <td><?=$_REQUEST['leave_to'];?></td>
+                <td><?=$_REQUEST['leave_description'];?></td>
+                <td><?=$_REQUEST['leaveStatusName'];?></td>
+                <td><a href="leave_edit.php?id=<?php echo $_REQUEST['leaveId']; ?>">แก้ไข</a>
+                <a href="leave_delete.php?id=<?php echo $_REQUEST["leaveId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
                 </tr>
                 <?php
                 }
@@ -123,9 +127,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
     <script>
 
         $(document).ready(function() {
-            $('#newsTable').DataTable( {
-                "order": [[ 0, "desc" ]]
-            } );
+            $('#employeeTable').DataTable();
         });
     </script>
 

@@ -12,12 +12,12 @@ if(!$objResult)
 $userid = $objResult["userid"];
 $_SESSION["username"] = $objResult["username"];
 $_SESSION["role"] = $objResult["role"];
-if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
+if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	if($_SESSION["role"] == 'Manager'){
 		Header("Location: ../Manager/index.php");
 	}
-	elseif($_SESSION["role"] == 'HR'){
-		Header("Location: ../HR/index.php");
+	elseif($_SESSION["role"] == 'Employee'){
+		Header("Location: ../Employee/index.php");
 	}
 	else{
 		Header("Location: ../index.php");
@@ -128,4 +128,3 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 </body>
 </html>
 <?php }?>
-	

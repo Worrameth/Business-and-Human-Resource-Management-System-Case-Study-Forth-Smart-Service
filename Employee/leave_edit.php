@@ -1,28 +1,6 @@
 <?php
-include_once '../connect.php';
-$strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
-$objQuery = mysqli_query($conn,$strSQL);
-$objResult = mysqli_fetch_array($objQuery);
-if(!$objResult)
-	{
-		echo "<script language=\"JavaScript\">";
-		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
-		echo "</script>";
-	}
-$userid = $objResult["userid"];
-$_SESSION["username"] = $objResult["username"];
-$_SESSION["role"] = $objResult["role"];
-if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
-	if($_SESSION["role"] == 'Manager'){
-		Header("Location: ../Manager/index.php");
-	}
-	elseif($_SESSION["role"] == 'HR'){
-		Header("Location: ../HR/index.php");
-	}
-	else{
-		Header("Location: ../index.php");
-	}
-}else{ ?>
+include_once 'leave_edit_save.php';
+?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -50,7 +28,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="index.php">
 					<!-- <img src="img/logo.png" alt="" /> -->
 					<img src="../img/logo.png" width="130" height="130"  alt="" />
 				</a>
@@ -84,17 +62,25 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 <body style="font-family: 'Prompt', sans-serif;">
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
 <h5 class="text-center text-success" id="update"></h5>
-<form action="save_leave.php" method="post" enctype="multipart/form-data">
+<form action="leave_edit_save.php?id=<?php echo $id;?>" method="post">  
   <center><table width="500" border="1" style="width: 500px" class="table table-bordered">
-  <tbody>    
+    <tbody>    
       <tr>
         <br><a style="text-align: center;"><h2>แจ้งลางาน</h2><br></a>
+      </tr>
+      <tr>
+        <td> &nbsp;รหัสลาหยุด</td>
+        <td><input name="leaveId" type="text" class="form-control" id="leaveId" value="<?=$leaveId?>" READONLY></td>
+      </tr>
+      <tr>
+        <td> &nbsp;ชื่อผู้ใช้งาน</td>
+        <td><input name="userId" type="text" class="form-control" id="userId" value="<?=$username?>" READONLY></td>
       </tr>
       <tr>
         <td> &nbsp;ประเภทการลาป่วย</td>
         <td>
         <select name="leaveTypeId" id="leaveTypeId" class="btn dropdown-toggle" data-toggle="dropdown">
-          <option value="" selected>-----เลือกประเภทการลา-----</option>
+            <option value=<?=$leaveTypeId;?> selected><?=$leaveTypeName;?></option>
             <?php
             include('connect.php');
             $sqli = "SELECT * FROM leave_type ORDER BY leaveTypeId DESC";
@@ -107,15 +93,29 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
       </tr>
       <tr>
         <td> &nbsp;ตั้งแต่ที่วันที่</td>
-        <td><input name="leave_from" type="date" class="form-control" id="leave_from" required></td>
+        <td><input name="leave_from" type="date" class="form-control" id="leave_from" value="<?=$leave_from?>"></td>
       </tr>
       <tr>
         <td> &nbsp;ขอลาตั้งแต่วันที่</td>
-        <td><input name="leave_to" type="date" class="form-control" id="leave_to" required></td>
+        <td><input name="leave_to" type="date" class="form-control" id="leave_to" value="<?=$leave_to?>"></td>
       </tr>
       <tr>
         <td> &nbsp;ลายละเอียดการลา</td>
-        <td><input name="leave_description" type="text" class="form-control" id="leave_description" required></td>
+        <td><input name="leave_description" type="text" class="form-control" id="leave_description" value="<?=$leave_description?>" required></td>
+      </tr>
+      <tr>
+        <td>&nbsp;สถานะการลา</td>
+        <td><select name="leaveStatusId" id="leaveStatusId" class="btn dropdown-toggle" data-toggle="dropdown" disabled>
+            <option value=<?=$leaveStatusId;?> selected><?=$leaveStatusName;?></option>
+            <?php
+            include('connect.php');
+            $sqli = "SELECT * FROM leave_status ORDER BY leaveStatusId DESC";
+            $result = mysqli_query($conn, $sqli);
+            while ($row = mysqli_fetch_array($result)) {
+              echo '<option value="'.$row["leaveStatusId"].'">'.$row["leaveStatusName"].'</option>';
+            }  
+              echo '</select>'; 
+            ?></td>
       </tr>
     </tbody>
   </table>
@@ -127,5 +127,3 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 </div>
 </body>
 </html>
-<?php }?>
-	

@@ -52,7 +52,7 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown">
+          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown" READONLY>
             <option value=<?=$departmentId;?> selected><?=$departmentName;?></option>
             <?php
             include('connect.php');
