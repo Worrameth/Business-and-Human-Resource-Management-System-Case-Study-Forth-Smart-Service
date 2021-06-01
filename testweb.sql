@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 02:14 PM
+-- Generation Time: Jun 01, 2021 at 07:57 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -95,14 +95,43 @@ INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentId`
 --
 
 CREATE TABLE `leave_main` (
-  `leaveId` int(10) NOT NULL,
-  `UserName` varchar(50) NOT NULL,
+  `leaveId` int(11) NOT NULL,
+  `userId` int(50) NOT NULL,
   `leaveTypeId` int(10) NOT NULL,
   `leave_from` date NOT NULL,
   `leave_to` date NOT NULL,
   `leave_description` varchar(255) NOT NULL,
-  `leave_status` int(10) NOT NULL
+  `leaveStatusId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leave_main`
+--
+
+INSERT INTO `leave_main` (`leaveId`, `userId`, `leaveTypeId`, `leave_from`, `leave_to`, `leave_description`, `leaveStatusId`) VALUES
+(10, 22, 2, '2021-06-12', '2021-06-15', 'ไม่สบายงับบบบ', 1),
+(11, 24, 1, '2021-06-29', '2021-06-30', 'ไม่สุบัยง่าาาาา', 1),
+(12, 20, 2, '2021-06-03', '2021-06-05', 'ลาหยุด', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leave_status`
+--
+
+CREATE TABLE `leave_status` (
+  `leaveStatusId` int(11) NOT NULL,
+  `leaveStatusName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leave_status`
+--
+
+INSERT INTO `leave_status` (`leaveStatusId`, `leaveStatusName`) VALUES
+(1, 'รออนุมัติ'),
+(2, 'อนุมัติ'),
+(3, 'ไม่อนุมัติ');
 
 -- --------------------------------------------------------
 
@@ -114,6 +143,14 @@ CREATE TABLE `leave_type` (
   `leaveTypeId` int(11) NOT NULL,
   `leaveTypeName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leave_type`
+--
+
+INSERT INTO `leave_type` (`leaveTypeId`, `leaveTypeName`) VALUES
+(1, 'ลาป่วย'),
+(2, 'ลาหยุด');
 
 -- --------------------------------------------------------
 
@@ -158,8 +195,13 @@ ALTER TABLE `employee`
 -- Indexes for table `leave_main`
 --
 ALTER TABLE `leave_main`
-  ADD PRIMARY KEY (`leaveId`),
-  ADD UNIQUE KEY `UserName` (`UserName`);
+  ADD PRIMARY KEY (`leaveId`);
+
+--
+-- Indexes for table `leave_status`
+--
+ALTER TABLE `leave_status`
+  ADD PRIMARY KEY (`leaveStatusId`);
 
 --
 -- Indexes for table `leave_type`
@@ -190,10 +232,22 @@ ALTER TABLE `employee`
   MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
+-- AUTO_INCREMENT for table `leave_main`
+--
+ALTER TABLE `leave_main`
+  MODIFY `leaveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `leave_status`
+--
+ALTER TABLE `leave_status`
+  MODIFY `leaveStatusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `leave_type`
 --
 ALTER TABLE `leave_type`
-  MODIFY `leaveTypeId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `leaveTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `news`
