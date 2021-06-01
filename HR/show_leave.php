@@ -82,10 +82,9 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
         <div class="container-fluid">
         <a href="leave.php">แจ้งลาหยุด</a></br>
         <div>ข้อมูลการลาหยุด</div>
-            <table id="employeeTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
+            <table id="leaveTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
                 <thead>
                     <tr>
-                        <th>รหัสลาหยุด</th>
                         <th>ชื่อผู้ใช้งาน</th>
                         <th>ประเภทการลาป่วย</th>
                         <th>ตั้งแต่ที่วันที่</th>
@@ -93,15 +92,15 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
                         <th>ลายละเอียดการลา</th>
                         <th>สถานะการลา</th>
                         <th></th>
+                        <th>หมายเหตุ</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT leaveId, employee.userId,employee.username, leave_type.leaveTypeName, leave_from, leave_to, leave_description, leave_status.leaveStatusId, leave_status.leaveStatusName  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.leaveStatusId");
+                  $result = mysqli_query($conn, "SELECT leaveId, employee.userId,employee.username, leave_type.leaveTypeName, leave_from, leave_to, leave_description, leave_status.leaveStatusId, leave_status.leaveStatusName, note  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.leaveStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                <td><?=$_REQUEST['leaveId'];?></td>
                 <td><?=$_REQUEST['username'];?></td>
                 <td><?=$_REQUEST['leaveTypeName'];?></td>
                 <td><?=$_REQUEST['leave_from'];?></td>
@@ -110,6 +109,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
                 <td><?=$_REQUEST['leaveStatusName'];?></td>
                 <td><a href="leave_edit.php?id=<?php echo $_REQUEST['leaveId']; ?>">แก้ไข</a>
                 <a href="leave_delete.php?id=<?php echo $_REQUEST["leaveId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
+                <td><?=$_REQUEST['note'];?></td>
                 </tr>
                 <?php
                 }
@@ -125,9 +125,10 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
-
         $(document).ready(function() {
-            $('#employeeTable').DataTable();
+            $('#leaveTable').DataTable( {
+                "order": [[ 2, "desc" ]]
+            } );
         });
     </script>
 

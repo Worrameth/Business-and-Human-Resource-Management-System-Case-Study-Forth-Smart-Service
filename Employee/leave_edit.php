@@ -105,17 +105,8 @@ include_once 'leave_edit_save.php';
       </tr>
       <tr>
         <td>&nbsp;สถานะการลา</td>
-        <td><select name="leaveStatusId" id="leaveStatusId" class="btn dropdown-toggle" data-toggle="dropdown" disabled>
-            <option value=<?=$leaveStatusId;?> selected><?=$leaveStatusName;?></option>
-            <?php
-            include('connect.php');
-            $sqli = "SELECT * FROM leave_status ORDER BY leaveStatusId DESC";
-            $result = mysqli_query($conn, $sqli);
-            while ($row = mysqli_fetch_array($result)) {
-              echo '<option value="'.$row["leaveStatusId"].'">'.$row["leaveStatusName"].'</option>';
-            }  
-              echo '</select>'; 
-            ?></td>
+        <td><select name="leaveStatusId" id="leaveStatusId" class="btn dropdown-toggle" data-toggle="dropdown">
+            <option value=<?=$leaveStatusId;?> selected><?=$leaveStatusName;?></option></td>
       </tr>
     </tbody>
   </table>

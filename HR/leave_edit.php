@@ -79,7 +79,7 @@ include_once 'leave_edit_save.php';
       <tr>
         <td> &nbsp;ประเภทการลาป่วย</td>
         <td>
-        <select name="leaveTypeId" id="leaveTypeId" class="btn dropdown-toggle" data-toggle="dropdown" hide>
+        <select name="leaveTypeId" id="leaveTypeId" class="btn dropdown-toggle" data-toggle="dropdown" >
             <option value=<?=$leaveTypeId;?> selected><?=$leaveTypeName;?></option>
       </tr>
       <tr>
@@ -107,6 +107,10 @@ include_once 'leave_edit_save.php';
             }  
               echo '</select>'; 
             ?></td>
+      </tr>
+      <tr>
+        <td> &nbsp;หมายเหตุ</td>
+        <td><input name="note" type="text" class="form-control" id="note" value="<?=$note?>"></td>
       </tr>
     </tbody>
   </table>
