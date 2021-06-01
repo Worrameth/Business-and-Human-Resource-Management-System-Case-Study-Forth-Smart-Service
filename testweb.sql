@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2021 at 06:04 AM
+-- Generation Time: May 30, 2021 at 02:14 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -68,8 +68,8 @@ CREATE TABLE `employee` (
   `userid` int(10) NOT NULL,
   `username` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `departmentName` varchar(255) NOT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `departmentId` int(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(150) DEFAULT NULL,
@@ -81,11 +81,12 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentName`, `phone`, `email`, `address`, `birthday`, `role`) VALUES
-(20, 'Admin', 'Admin Admin', 'Admin', 'IT', '1234567890', '1234@gmail.com', NULL, NULL, 'HR'),
-(22, 'Worrameth', 'Worrameth Manajit1234', '1234', 'IT', '0954409779', '1234@gmail.com', NULL, NULL, NULL),
-(23, 'Manager', 'Manager Manager', '1234', 'Management', '1234567890', '1234@gmail.com', NULL, NULL, 'Manager'),
-(24, '1234', '123 123', '1234', 'E-Commerce', '1234567890', '1234@gmail.com', NULL, NULL, NULL);
+INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentId`, `phone`, `email`, `address`, `birthday`, `role`) VALUES
+(20, 'Admin', 'Admin Admin', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'HR'),
+(22, 'Worrameth', 'Worrameth Manajit1234', '1234', 12, '0954409779', '1234@gmail.com', NULL, NULL, 'Employee'),
+(23, 'Manager', 'Manager Manager', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Manager'),
+(24, '1234', '123 123', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Employee'),
+(26, 'Worrameth123', 'Worrameth Manajiasdas', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Employee');
 
 -- --------------------------------------------------------
 
@@ -113,6 +114,28 @@ CREATE TABLE `leave_type` (
   `leaveTypeId` int(11) NOT NULL,
   `leaveTypeName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `newsId` int(1) NOT NULL,
+  `headline` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `upload_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`newsId`, `headline`, `image`, `filename`, `upload_time`) VALUES
+(9, 'สวัสดีค้าบบบ ท่านสมาชิก', 'endoface.PNG', 'Resume_Worrameth.pdf', '2021-05-30 16:56:52'),
+(10, 'หัวข้อข่าวสาร', 'YLCwo3b.jpg', 'Resume_Worrameth.pdf', '2021-05-30 17:02:51');
 
 --
 -- Indexes for dumped tables
@@ -145,6 +168,12 @@ ALTER TABLE `leave_type`
   ADD PRIMARY KEY (`leaveTypeId`);
 
 --
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`newsId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -158,13 +187,19 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `leave_type`
 --
 ALTER TABLE `leave_type`
   MODIFY `leaveTypeId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `newsId` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
