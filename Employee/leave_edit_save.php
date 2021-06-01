@@ -1,7 +1,7 @@
 <?php
 include_once '../connect.php';
 $id = $_GET["id"];
-$res = mysqli_query($conn, "SELECT leaveId, employee.userId, employee.username, leave_type.leaveTypeName, leave_type.leaveTypeId, leave_from, leave_to, leave_description, leave_status.leaveStatusName, leave_status.leaveStatusId  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.LeaveStatusId");
+$res = mysqli_query($conn, "SELECT leaveId, employee.userId, employee.username, leave_type.leaveTypeName, leave_type.leaveTypeId, leave_from, leave_to, leave_description, leave_status.leaveStatusName, leave_status.leaveStatusId  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.LeaveStatusId WHERE leaveId = $id");
 while ($_REQUEST = mysqli_fetch_array($res)) {
   $leaveId = $_REQUEST["leaveId"];
   $username = $_REQUEST["username"];
