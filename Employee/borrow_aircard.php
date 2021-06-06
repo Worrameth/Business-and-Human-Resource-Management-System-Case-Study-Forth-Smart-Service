@@ -1,29 +1,7 @@
 <?php
 include_once '../connect.php';
-$strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
-$objQuery = mysqli_query($conn,$strSQL);
-$objResult = mysqli_fetch_array($objQuery);
-date("d/m/Y");
-if(!$objResult)
-	{
-		echo "<script language=\"JavaScript\">";
-		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
-		echo "</script>";
-	}
-$userid = $objResult["userid"];
-$_SESSION["username"] = $objResult["username"];
-$_SESSION["role"] = $objResult["role"];
-if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
-	if($_SESSION["role"] == 'Manager'){
-		Header("Location: ../Manager/index.php");
-	}
-	elseif($_SESSION["role"] == 'HR'){
-		Header("Location: ../HR/index.php");
-	}
-	else{
-		Header("Location: ../index.php");
-	}
-}else{ ?>
+$acId = $_GET["id"];
+?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -82,52 +60,32 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 <body style="font-family: 'Prompt', sans-serif;">
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
 <h5 class="text-center text-success" id="update"></h5>
-<form action="save_leave.php" method="post" enctype="multipart/form-data">
+<form action="borrow_aircard_save.php?id=<?php echo $acId;?>" method="post" enctype="multipart/form-data">
   <center><table width="500" border="1" style="width: 500px" class="table table-bordered">
   <tbody>    
       <tr>
-        <br><a style="text-align: center;"><h2>แจ้งลางาน</h2><br></a>
+        <br><a style="text-align: center;"><h2>หน้าแบบฟอร์มยืมแอร์การ์ด</h2><br></a>
       </tr>
       <tr>
-        <td> &nbsp;ประเภทการลาป่วย</td>
-        <td>
-        <select name="leaveTypeId" id="leaveTypeId" class="btn dropdown-toggle" data-toggle="dropdown">
-          <option value="" selected>-----เลือกประเภทการลา-----</option>
-            <?php
-            include('connect.php');
-            $sqli = "SELECT * FROM leave_type ORDER BY leaveTypeId DESC";
-            $result = mysqli_query($conn, $sqli);
-            while ($row = mysqli_fetch_array($result)) {
-              echo '<option value="'.$row["leaveTypeId"].'">'.$row["leaveTypeName"].'</option>';
-            }  
-              echo '</select>'; 
-            ?>
+        <td> &nbsp;รหัสแอร์การ์ด</td>
+        <td><input name="acId" id="acId" type="text" value="<?=$acId?>" READONLY></td>
        </tr>
-       
       <tr>
-          <td> &nbsp;ตั้งแต่ที่วันที่</td>
-          <td><input name="leave_from" type="date" class="form-control" id="leave_from" required></td>
+        <td> &nbsp;ยืมที่วันที่</td>
+        <td><input name="borrow_date" type="date" class="form-control" id="borrow_date" value="<?=$borrow_date?>" required></td>
       </tr>
       <tr>
-          <td> &nbsp;ขอลาตั้งแต่วันที่</td>
-          <td><input name="leave_to" type="date" class="form-control" id="leave_to" required></td>
+        <td> &nbsp;คืนวันที่</td>
+        <td><input name="return_date" type="date" class="form-control" id="return_date" value="<?=$return_date?>" required></td>
       </tr>
     </tbody>
   </table>
-  
-  <h4>ลายละเอียดการลา</h4>
-  <div class="col-md-8">
-      <div class="form-group"> 
-      <textarea class="form-control" name="leave_description" rows="4" id="leave_description" required></textarea>
-									
-								</div>
       <br>
           <center><button type="submit" id="save" name="save" class="btn btn-info" style="width: 90px;">บันทึก</button>
           <button type="reset" class="btn btn-secondary">ล้างข้อมูล</button>
-          <a href="show_leave.php" class="btn btn-secondary" role="button">ยกเลิก</a>
+          <a href="aircard.php" class="btn btn-secondary" role="button">ยกเลิก</a>
 </form>
 </div>
 </body>
 </html>
-<?php }?>
 	

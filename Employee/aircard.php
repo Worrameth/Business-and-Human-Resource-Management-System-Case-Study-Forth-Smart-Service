@@ -10,6 +10,7 @@ if(!$objResult)
 		echo "alert('กรุณาเข้าสู่ระบบ');window.location='../index.php'";
 		echo "</script>";
 	}
+$userid = $objResult["userid"];
 $_SESSION["username"] = $objResult["username"];
 $_SESSION["role"] = $objResult["role"];
 if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
@@ -129,9 +130,14 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
                 <tr>
                 <td><?=$_REQUEST['acId'];?></td>
                 <td><?=$_REQUEST['toolStatusName'];?></td>
-                <td><a>ยืม</a></td>
+                <td><?php if($_REQUEST['toolStatusName'] == 'สำรอง'){?>
+                    <a href="borrow_aircard.php?id=<?php echo $_REQUEST['acId'];?>">ยืม</a>
+                  <?php }else{?>
+                    <a href="borrow_aircard.php?id=<?php echo $_REQUEST['acId'];?>" hidden>ยืม</a>
+                  </td>
                 </tr>
                 <?php
+                  }
                 }
                 // close connection database
                 mysqli_close($conn);

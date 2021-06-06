@@ -127,8 +127,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT borrowId, employee.name, department.departmentName,borrowItem,borrow_date, return_date, tool_status.toolStatusName FROM borrow INNER JOIN employee ON borrow.userId = employee.userid INNER JOIN department ON borrow.departmentId = department.departmentId INNER JOIN tool_status ON borrow.toolStatusId = tool_status.toolStatusId");
-                  //$_SESSION["userId"] = $objResult["username"];
+                  $result = mysqli_query($conn, "SELECT borrowId, employee.name, department.departmentName,borrowItem,date_format(borrow_date, '%d/%m/%Y') As borrow_date, date_format(return_date, '%d/%m/%Y') As return_date, tool_status.toolStatusName FROM borrow INNER JOIN employee ON borrow.userId = employee.userid INNER JOIN department ON borrow.departmentId = department.departmentId INNER JOIN tool_status ON borrow.toolStatusId = tool_status.toolStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>

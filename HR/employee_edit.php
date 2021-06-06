@@ -43,7 +43,7 @@ background-color: #008B8B;
       </tr>
       <tr>
         <td> &nbsp;รหัสผ่าน</td>
-        <td><input name="password" type="password" class="form-control" id="password" placeholder="กรุณากรอกรหัสผ่าน"></td>
+        <td><input name="password" type="password" class="form-control" id="password" value="<?=$password?>" placeholder="กรุณากรอกรหัสผ่าน"></td>
       </tr>
       <tr>
         <td>&nbsp;ชื่อ-สกุล</td>
@@ -52,7 +52,7 @@ background-color: #008B8B;
       <tr>
         <td> &nbsp;แผนก</td>
         <td>
-          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown" READONLY>
+          <select name="departmentId" id="departmentId" class="btn dropdown-toggle" data-toggle="dropdown">
             <option value=<?=$departmentId;?> selected><?=$departmentName;?></option>
             <?php
             include('connect.php');
