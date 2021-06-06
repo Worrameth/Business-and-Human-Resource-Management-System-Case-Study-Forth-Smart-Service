@@ -99,10 +99,10 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
         <div class="row inner-menu-box">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-									<a class="nav-link active" class="nav-link" href="borrow.php">Menu</a>
-                  <a class="nav-link" class="nav-link" href="headphones.php">HeadPhones</a>
-                  <a class="nav-link" class="nav-link" href="aircard.php">AirCard</a>
-                  <a class="nav-link" class="nav-link" href="wireless.php">Wireless USB</a>
+                    <a class="nav-link" class="nav-link" href="borrow.php">Menu</a>
+                    <a class="nav-link" class="nav-link" href="headphones.php">HeadPhones</a>
+                    <a class="nav-link" class="nav-link" href="aircard.php">AirCard</a>
+                    <a class="nav-link active" class="nav-link" href="wireless.php">Wireless USB</a>
                 </div>
             </div>
 						<div class="col-9">
@@ -112,33 +112,24 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 						<table>
 						<tbody>
 						<tr>
-        			<br><a style="text-align: center;"><h2>ข้อมูลการยืม/คืนล่าสุด</h2><br></a>
+        			<br><a style="text-align: center;"><h2>ข้อมูลสถานะ ยืม/คืน ไวร์เลส</h2><br></a>
 							<table id="borrowTable" class="table table-striped table-bordered table-sm text-center" cellspacing="0"width="100%">
                 <thead>
                     <tr>
-                        <th>รหัสยืม/คืน</th>
-                        <th>ชื่อผู้ยืม</th>
-                        <th>แผนก</th>
-												<th>อุปกรณ์ที่ยืม</th>
-                        <th>ยืมวันที่</th>
-                        <th>คืนวันที่</th>
+                        <th>รหัสไวร์เลส</th>
                         <th>สถานะการยืม</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT borrowId, employee.name, department.departmentName,borrowItem,borrow_date, return_date, tool_status.toolStatusName FROM borrow INNER JOIN employee ON borrow.userId = employee.userid INNER JOIN department ON borrow.departmentId = department.departmentId INNER JOIN tool_status ON borrow.toolStatusId = tool_status.toolStatusId");
-                  //$_SESSION["userId"] = $objResult["username"];
+                  $result = mysqli_query($conn, "SELECT acId, tool_status.toolStatusName FROM air_card INNER JOIN tool_status ON air_card.toolStatusId = tool_status.toolStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                <td><?=$_REQUEST['borrowId'];?></td>
-                <td><?=$_REQUEST['name'];?></td>
-                <td><?=$_REQUEST['departmentName'];?></td>
-								<td><?=$_REQUEST['borrowItem'];?></td>
-                <td><?=$_REQUEST['borrow_date'];?></td>
-                <td><?=$_REQUEST['return_date'];?></td>
+                <td><?=$_REQUEST['acId'];?></td>
                 <td><?=$_REQUEST['toolStatusName'];?></td>
+                <td><a>ยืม</a></td>
                 </tr>
                 <?php
                 }
@@ -176,11 +167,11 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
-					$('#borrowTable').DataTable( {
+					var table = $('#borrowTable').DataTable( {
 						pageLength : 10,
-						"order": [[ 0, "desc" ]]
-					});
-				});
+						lengthMenu: [[10], [10, 'Todos']]
+					} )
+				} );
 		</script>
 </body>
 </html>

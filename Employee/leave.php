@@ -3,6 +3,7 @@ include_once '../connect.php';
 $strSQL = "SELECT * FROM employee WHERE username = '".$_SESSION["username"]."'";
 $objQuery = mysqli_query($conn,$strSQL);
 $objResult = mysqli_fetch_array($objQuery);
+date("d/m/Y");
 if(!$objResult)
 	{
 		echo "<script language=\"JavaScript\">";
@@ -78,9 +79,6 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
 <body style="font-family: 'Prompt', sans-serif;">
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
 <h5 class="text-center text-success" id="update"></h5>
@@ -104,22 +102,26 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
             }  
               echo '</select>'; 
             ?>
+       </tr>
+       
+      <tr>
+          <td> &nbsp;ตั้งแต่ที่วันที่</td>
+          <td><input name="leave_from" type="date" class="form-control" id="leave_from" required></td>
       </tr>
       <tr>
-        <td> &nbsp;ตั้งแต่ที่วันที่</td>
-        <td><input name="leave_from" type="date" class="form-control" id="leave_from" required></td>
-      </tr>
-      <tr>
-        <td> &nbsp;ขอลาตั้งแต่วันที่</td>
-        <td><input name="leave_to" type="date" class="form-control" id="leave_to" required></td>
-      </tr>
-      <tr>
-        <td> &nbsp;ลายละเอียดการลา</td>
-        <td><input name="leave_description" type="text" class="form-control" id="leave_description" required></td>
+          <td> &nbsp;ขอลาตั้งแต่วันที่</td>
+          <td><input name="leave_to" type="date" value="<?php echo date('d-m-Y');?>" class="form-control" id="leave_to" required></td>
       </tr>
     </tbody>
   </table>
-        <br>
+  
+  <h4>ลายละเอียดการลา</h4>
+  <div class="col-md-8">
+      <div class="form-group"> 
+      <textarea class="form-control" name="leave_description" rows="4" id="leave_description" required></textarea>
+									
+								</div>
+      <br>
           <center><button type="submit" id="save" name="save" class="btn btn-info" style="width: 90px;">บันทึก</button>
           <button type="reset" class="btn btn-secondary">ล้างข้อมูล</button>
           <a href="show_leave.php" class="btn btn-secondary" role="button">ยกเลิก</a>

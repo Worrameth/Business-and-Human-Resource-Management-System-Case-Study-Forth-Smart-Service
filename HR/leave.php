@@ -78,9 +78,6 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
 <body style="font-family: 'Prompt', sans-serif;">
 <div class="container" style="background-color:#ffff; border:3px solid #dedede; width:850px; border-radius:10px; margin-top: 70px; height: 800px; margin-bottom: 70px;">
 <h5 class="text-center text-success" id="update"></h5>
@@ -113,10 +110,13 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
         <td> &nbsp;ขอลาตั้งแต่วันที่</td>
         <td><input name="leave_to" type="date" class="form-control" id="leave_to" required></td>
       </tr>
-      <tr>
-        <td> &nbsp;ลายละเอียดการลา</td>
-        <td><input name="leave_description" type="text" class="form-control" id="leave_description" required></td>
-      </tr>
+      </tbody>
+  </table>
+  
+      <h4>ลายละเอียดการลา</h4>
+  <div class="col-md-8">
+      <div class="form-group"> 
+      <textarea class="form-control" name="leave_description" rows="4" id="leave_description" required></textarea>
     </tbody>
   </table>
         <br>

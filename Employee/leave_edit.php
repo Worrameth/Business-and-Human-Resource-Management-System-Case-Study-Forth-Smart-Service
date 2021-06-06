@@ -69,10 +69,6 @@ include_once 'leave_edit_save.php';
         <br><a style="text-align: center;"><h2>แจ้งลางาน</h2><br></a>
       </tr>
       <tr>
-        <td> &nbsp;รหัสลาหยุด</td>
-        <td><input name="leaveId" type="text" class="form-control" id="leaveId" value="<?=$leaveId?>" READONLY></td>
-      </tr>
-      <tr>
         <td> &nbsp;ชื่อผู้ใช้งาน</td>
         <td><input name="userId" type="text" class="form-control" id="userId" value="<?=$username?>" READONLY></td>
       </tr>

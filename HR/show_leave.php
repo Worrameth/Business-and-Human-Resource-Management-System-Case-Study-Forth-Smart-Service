@@ -86,7 +86,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
                 <thead>
                     <tr>
                         <th>ชื่อผู้ใช้งาน</th>
-                        <th>ประเภทการลาป่วย</th>
+                        <th>ประเภท</th>
                         <th>ตั้งแต่ที่วันที่</th>
                         <th>ถึงวันที่</th>
                         <th>ลายละเอียดการลา</th>
@@ -97,7 +97,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT leaveId, employee.userId,employee.username, leave_type.leaveTypeName, leave_from, leave_to, leave_description, leave_status.leaveStatusId, leave_status.leaveStatusName, note  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.leaveStatusId");
+                  $result = mysqli_query($conn, "SELECT leaveId, employee.userId,employee.username, leave_type.leaveTypeName, date_format(leave_from, '%d/%m/%Y') As leave_from, date_format(leave_to, '%d/%m/%Y') As leave_to, leave_description, leave_status.leaveStatusId, leave_status.leaveStatusName, note  FROM leave_main INNER JOIN leave_type ON leave_main.leaveTypeId = leave_type.leaveTypeId INNER JOIN employee ON leave_main.userId = employee.userid INNER JOIN leave_status ON leave_main.leaveStatusId = leave_status.leaveStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
