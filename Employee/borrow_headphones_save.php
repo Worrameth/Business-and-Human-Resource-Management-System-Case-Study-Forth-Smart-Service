@@ -1,9 +1,9 @@
 <?php
 include_once '../connect.php';
-$acId = $_GET['id'];
-$res = mysqli_query($conn, "SELECT acId, tool_status.toolStatusName, tool_status.toolStatusId FROM air_card INNER JOIN tool_status ON air_card.toolStatusId = tool_status.toolStatusId WHERE acId = '$acId'");
+$hpId = $_GET['id'];
+$res = mysqli_query($conn, "SELECT hpId, tool_status.toolStatusName, tool_status.toolStatusId FROM headphones INNER JOIN tool_status ON headphones.toolStatusId = tool_status.toolStatusId WHERE hpId = '$hpId'");
 while ($_REQUEST = mysqli_fetch_array($res)) {
-  $acId = $_REQUEST["acId"];
+  $acId = $_REQUEST["hpId"];
   $toolStatusId = $_REQUEST["toolStatusId"];
   $toolStatusName = $_REQUEST["toolStatusName"];
 }
@@ -17,10 +17,10 @@ $return_date = $_POST['return_date'];
 
 if (isset($_POST["save"])) {
   $sql = "INSERT INTO borrow(userId,departmentId,borrowItem,borrow_date,return_date,toolStatusId)
-			 VALUES($userid,$departmentId,'$acId','$borrow_date','$return_date',2)";
+			 VALUES($userid,$departmentId,'$hpId','$borrow_date','$return_date',2)";
   $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 
-  $upsql = "UPDATE air_card SET toolStatusId = 2 WHERE acId = $acId";
+  $upsql = "UPDATE headphones SET toolStatusId = 2 WHERE hpId = '$hpId'";
   $result2 = mysqli_query($conn, $upsql) or die ("Error in query: $upsql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database

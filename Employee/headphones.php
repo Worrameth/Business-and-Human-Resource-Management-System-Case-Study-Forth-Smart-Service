@@ -124,15 +124,19 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
                 <tbody>
                 <?php
                   $result = mysqli_query($conn, "SELECT hpId, tool_status.toolStatusName FROM headphones INNER JOIN tool_status ON headphones.toolStatusId = tool_status.toolStatusId");
-                  //$_SESSION["userId"] = $objResult["username"];
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
                 <td><?=$_REQUEST['hpId'];?></td>
                 <td><?=$_REQUEST['toolStatusName'];?></td>
-                <td><a>ยืม</a></td>
+                <td><?php if($_REQUEST['toolStatusName'] == 'สำรอง'){?>
+                    <a href="borrow_headphones.php?id=<?php echo $_REQUEST['hpId'];?>">ยืม</a>
+                  <?php }else{?>
+                    <a href="borrow_headphones.php?id=<?php echo $_REQUEST['hpId'];?>" hidden>ยืม</a>
+                  </td>
                 </tr>
                 <?php
+                  }
                 }
                 // close connection database
                 mysqli_close($conn);

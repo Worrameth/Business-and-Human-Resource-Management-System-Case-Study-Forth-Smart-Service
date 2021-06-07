@@ -127,7 +127,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
     <script>
         $(document).ready(function() {
             $('#leaveTable').DataTable( {
-                "order": [[ 2, "desc" ]]
+                "order": [[ 5, "asc" ]]
             } );
         });
     </script>

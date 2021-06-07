@@ -29,7 +29,7 @@ if(!$objResult)
 	
 	if($result){
 	echo "<script type='text/javascript'>";
-	echo "alert('Register Succesfuly');";
+	echo "alert('แจ้งข้อมูลการลาเสร็จสิ้น');";
 	echo "window.location = 'show_leave.php'; ";
 	echo "</script>";
 	

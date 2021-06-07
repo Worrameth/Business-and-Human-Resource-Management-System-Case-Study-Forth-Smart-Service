@@ -108,8 +108,14 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
                 <td><?=$_REQUEST['leave_to'];?></td>
                 <td><?=$_REQUEST['leave_description'];?></td>
                 <td><?=$_REQUEST['leaveStatusName'];?></td>
-                <td><a href="leave_edit.php?id=<?php echo $_REQUEST['leaveId']; ?>">แก้ไข</a>
-                <a href="leave_delete.php?id=<?php echo $_REQUEST["leaveId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
+                <td><?php if($_REQUEST['leaveStatusName'] == 'รออนุมัติ'){?>
+                    <a href="leave_edit.php?id=<?php echo $_REQUEST['leaveId']; ?>">แก้ไข</a>
+                    <a href="leave_delete.php?id=<?php echo $_REQUEST["leaveId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a>
+                  <?php }else{?>
+                    <a href="leave_edit.php?id=<?php echo $_REQUEST['leaveId']; ?>" hidden>แก้ไข</a>
+                    <a href="leave_delete.php?id=<?php echo $_REQUEST["leaveId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')" hidden>ลบ</a>
+                    <?php }?>
+                </td>
                 <td><?=$_REQUEST['note'];?></td>
                 </tr>
                 <?php
@@ -128,7 +134,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
     <script>
         $(document).ready(function() {
             $('#leaveTable').DataTable( {
-                "order": [[ 2, "desc" ]]
+                "order": [[ 5, "asc" ]]
             });
         });
     </script>

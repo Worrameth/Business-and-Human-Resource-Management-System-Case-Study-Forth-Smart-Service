@@ -24,7 +24,7 @@ if (isset($_POST["save"])) {
 	
 	if($result){
 		echo "<script type='text/javascript'>";
-		echo "alert('Edit Succesfuly');";
+		echo "alert('แก้ไขข้อมูลการลาเสร็จสิ้น');";
 		echo "window.location = 'show_leave.php'; ";
 		echo "</script>";
 	}

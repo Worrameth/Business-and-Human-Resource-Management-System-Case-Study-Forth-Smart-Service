@@ -123,15 +123,20 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
                 </thead>
                 <tbody>
                 <?php
-                  $result = mysqli_query($conn, "SELECT acId, tool_status.toolStatusName FROM air_card INNER JOIN tool_status ON air_card.toolStatusId = tool_status.toolStatusId");
+                  $result = mysqli_query($conn, "SELECT wrId, tool_status.toolStatusName FROM wireless INNER JOIN tool_status ON wireless.toolStatusId = tool_status.toolStatusId");
                   while ($_REQUEST = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                <td><?=$_REQUEST['acId'];?></td>
+                <td><?=$_REQUEST['wrId'];?></td>
                 <td><?=$_REQUEST['toolStatusName'];?></td>
-                <td><a>ยืม</a></td>
+                <td><?php if($_REQUEST['toolStatusName'] == 'สำรอง'){?>
+                    <a href="borrow_wireless.php?id=<?php echo $_REQUEST['wrId'];?>">ยืม</a>
+                  <?php }else{?>
+                    <a href="borrow_wireless.php?id=<?php echo $_REQUEST['wrId'];?>" hidden>ยืม</a>
+                  </td>
                 </tr>
                 <?php
+                  }
                 }
                 // close connection database
                 mysqli_close($conn);
