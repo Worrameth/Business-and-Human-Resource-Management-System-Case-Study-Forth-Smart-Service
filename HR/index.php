@@ -49,7 +49,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="index.php">
 					<!-- <img src="img/logo.png" alt="" /> -->
 					<img src="../img/logo.png" width="130" height="130"  alt="" />
 				</a>
@@ -61,6 +61,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 						<li class="nav-item active"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
 						<li class="nav-item"><a class="nav-link" href="news.php">เพิ่มกำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="borrow.php">จัดการการยืม-คืน</a></li>
 						<li class="nav-item"><a class="nav-link" href="show_leave.php">จัดการการลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>

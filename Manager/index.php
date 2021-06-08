@@ -60,10 +60,10 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Manager"){  //check session
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูแลรายรับรายจ่าย</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูประวัติการลางานทั้งหมด</a></li>
-						<li class="nav-item"><a class="nav-link" href="">ดูประวัติการยืม - คืนอุปกรณ์ทั้งหมด</a></li>
-            <li class="nav-item"><a class="nav-link" href="">ดูประวัติการเช็คอิน - เช็คเอ้าท์ทั้งหมด</a></li>
+						<li class="nav-item"><a class="nav-link" href="allsalary.php">ดูแลรายรับรายจ่าย</a></li>
+						<li class="nav-item"><a class="nav-link" href="allleave.php">ดูประวัติการลางานทั้งหมด</a></li>
+						<li class="nav-item"><a class="nav-link" href="allborrow.php">ดูประวัติการยืม - คืนอุปกรณ์ทั้งหมด</a></li>
+            <li class="nav-item"><a class="nav-link" href="allcheck.php">ดูประวัติการเช็คอิน - เช็คเอ้าท์ทั้งหมด</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
