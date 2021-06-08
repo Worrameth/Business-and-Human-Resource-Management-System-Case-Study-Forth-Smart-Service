@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2021 at 04:59 PM
+-- Generation Time: Jun 08, 2021 at 06:45 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -65,9 +65,10 @@ CREATE TABLE `borrow` (
 
 INSERT INTO `borrow` (`borrowId`, `userId`, `departmentId`, `borrowItem`, `borrow_date`, `return_date`, `toolStatusId`) VALUES
 (35, 22, 12, '3194103012030217', '2021-06-11', '2021-06-12', 2),
-(40, 22, 12, 'H4010RH0001BE', '2021-06-11', '2021-06-12', 2),
+(40, 22, 12, 'H4010RH0001BE', '2021-06-11', '2021-06-12', 1),
 (41, 24, 12, 'H4010RH0001BV', '2021-06-10', '2021-06-11', 2),
-(42, 24, 12, 'TL1J1JC000191', '2021-06-17', '2021-06-18', 2);
+(42, 24, 12, 'TL1J1JC000191', '2021-06-17', '2021-06-18', 2),
+(43, 20, 12, 'TL1J1JC000196', '2021-06-09', '2021-06-10', 1);
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,7 @@ CREATE TABLE `headphones` (
 
 INSERT INTO `headphones` (`hpId`, `toolStatusId`) VALUES
 ('H4010RH00017F', 1),
-('H4010RH0001BE', 2),
+('H4010RH0001BE', 1),
 ('H4010RH0001BS', 1),
 ('H4010RH0001BV', 2),
 ('H4010RH0001BW', 1);
@@ -370,7 +371,7 @@ ALTER TABLE `wireless`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `department`
