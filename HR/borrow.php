@@ -139,7 +139,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
                 <td><?=$_REQUEST['return_date'];?></td>
                 <td><?=$_REQUEST['toolStatusName'];?></td>
                 <td><a href="borrow_edit.php?id=<?php echo $_REQUEST['borrowId']; ?>">แก้ไข</a>
-                <a href="borrow_delete.php?id=<?php echo $_REQUEST["borrowId"]; ?>" onClick="return confirm('คุณแน่ใจแล้วนะว่าจะลบ ?')">ลบ</a></td>
+                </a></td>
                 </tr>
                 <?php
                 }
