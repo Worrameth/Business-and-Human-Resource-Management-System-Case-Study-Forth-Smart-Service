@@ -95,6 +95,21 @@ background-color: #008B8B;
           <td><input name="email" type="email" class="form-control" id="email" size="35" placeholder="กรุณากรอกอีเมล์" required></td>
       <input name="status" type="hidden" class="form-control" id="status"value="user" size="35" readonly>
         </tr>
+        <td> &nbsp;ตำแหน่ง</td>
+        <td>
+          <select name="role" id="role" class="btn dropdown-toggle" data-toggle="dropdown" required>
+          <option value="" selected>-----เลือกตำแหน่ง-----</option>
+          <?php
+            include('../connect.php');
+            $sqli = "SELECT * FROM role";
+            $result = mysqli_query($conn, $sqli);
+            while ($row = mysqli_fetch_array($result)) {
+              echo '<option value="'.$row["roleName"].'">'.$row["roleName"].'</option>';
+            }  
+              echo '</select>'; 
+          ?>
+          </select>
+        </td>
     </tbody>
   </table>
         <br>

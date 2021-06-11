@@ -10,9 +10,10 @@ while ($_REQUEST = mysqli_fetch_array($res)) {
 	$departmentName = $_REQUEST["departmentName"];
   $email = $_REQUEST["email"];
   $phone = $_REQUEST["phone"];
+	$role = $_REQUEST["role"];
 }
 if (isset($_POST["save"])) {
-  $sql = "UPDATE employee SET password='$_POST[password]', name = '$_POST[name]', departmentId = '$_POST[departmentId]', phone = '$_POST[phone]', email = '$_POST[email]' WHERE userid = $id";
+  $sql = "UPDATE employee SET password='$_POST[password]', name = '$_POST[name]', departmentId = '$_POST[departmentId]', phone = '$_POST[phone]', role = '$_POST[role]', email = '$_POST[email]' WHERE userid = $id";
   $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database
