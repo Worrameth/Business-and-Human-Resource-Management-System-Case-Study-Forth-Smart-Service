@@ -34,7 +34,7 @@ background-color: #008B8B;
   <center><table width="500" border="1" style="width: 500px" class="table table-bordered">
     <tbody>
       <tr>
-        <br><a style="text-align: center;"><h2>เพิ่มกำหนดการ</h2><br></a>
+        <br><a style="text-align: center;"><h2>แก้ไขกำหนดการ</h2><br></a>
         <td width="130">&nbsp;รูปภาพ</td>
         <td width="150">
           <input name="image" class="form-control" type="file" id="image" size="20" required><?php echo "<img src=uploads/".$image." height=200 width=200 />";?></td>

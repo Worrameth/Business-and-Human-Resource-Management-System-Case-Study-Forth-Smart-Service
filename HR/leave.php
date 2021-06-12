@@ -59,10 +59,11 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "HR"){  //check session
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="leave.php">แจ้งลางาน</a></li>
+					<li class="nav-item active"><a class="nav-link" href="show_leave.php">จัดการการลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
-						<li class="nav-item"><a class="nav-link" href="news.php">กำหนดการ</a></li>
-						<li class="nav-item"><a class="nav-link" href="borrow.php">ยืม - คืนอุปกรณ์</a></li>
+						<li class="nav-item"><a class="nav-link" href="news.php">เพิ่มกำหนดการ</a></li>
+						<li class="nav-item"><a class="nav-link" href="employee.php">จัดการข้อมูลพนักงาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="borrow.php">จัดการการยืม-คืน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
