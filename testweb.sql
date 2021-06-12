@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2021 at 06:45 PM
+-- Generation Time: Jun 12, 2021 at 02:42 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -39,7 +39,7 @@ CREATE TABLE `air_card` (
 INSERT INTO `air_card` (`acId`, `toolStatusId`) VALUES
 ('3194103012030215', 1),
 ('3194103012030216', 1),
-('3194103012030217', 2),
+('3194103012030217', 1),
 ('3194103012030218', 1),
 ('3194103012030222', 1);
 
@@ -64,11 +64,13 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`borrowId`, `userId`, `departmentId`, `borrowItem`, `borrow_date`, `return_date`, `toolStatusId`) VALUES
-(35, 22, 12, '3194103012030217', '2021-06-11', '2021-06-12', 2),
+(35, 22, 12, '3194103012030217', '2021-06-11', '2021-06-12', 1),
 (40, 22, 12, 'H4010RH0001BE', '2021-06-11', '2021-06-12', 1),
 (41, 24, 12, 'H4010RH0001BV', '2021-06-10', '2021-06-11', 2),
 (42, 24, 12, 'TL1J1JC000191', '2021-06-17', '2021-06-18', 2),
-(43, 20, 12, 'TL1J1JC000196', '2021-06-09', '2021-06-10', 1);
+(43, 20, 12, 'TL1J1JC000196', '2021-06-09', '2021-06-10', 1),
+(45, 35, 7, 'TL1J1C002384', '2021-06-18', '2021-06-19', 2),
+(46, 35, 7, 'H4010RH0001BE', '2021-06-13', '2021-06-15', 2);
 
 -- --------------------------------------------------------
 
@@ -121,8 +123,6 @@ CREATE TABLE `employee` (
   `departmentId` int(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `address` varchar(150) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
   `role` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -130,12 +130,31 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentId`, `phone`, `email`, `address`, `birthday`, `role`) VALUES
-(20, 'Admin', 'Admin Admin', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'HR'),
-(22, 'Worrameth', 'Worrameth Manajit', '1234', 12, '0954409779', '1234@gmail.com', NULL, NULL, 'Employee'),
-(23, 'Manager', 'Manager Manager', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Manager'),
-(24, '1234', '123 123', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Employee'),
-(26, 'Worrameth123', 'Worrameth Manajiasdas', '1234', 12, '1234567890', '1234@gmail.com', NULL, NULL, 'Employee');
+INSERT INTO `employee` (`userid`, `username`, `name`, `password`, `departmentId`, `phone`, `email`, `role`) VALUES
+(20, 'Admin', 'Admin Admin', '1234', 12, '1234567890', '1234@gmail.com', 'HR'),
+(22, 'Worrameth', 'Worrameth Manajit', '1234', 12, '0954409779', '1234@gmail.com', 'Employee'),
+(23, 'Manager', 'Manager Manager', '1234', 12, '1234567890', '1234@gmail.com', 'Manager'),
+(24, '1234', '123 123', '1234', 12, '1234567890', '1234@gmail.com', 'Employee'),
+(26, 'Worrameth123', 'Worrameth Manajiasdas', '1234', 12, '1234567890', '1234@gmail.com', 'Employee'),
+(35, 'wilanda.l', 'วิลันดา  ลามอ', 'Forthsmart1', 7, '0888888888', 'wilanda_l@forthsmart.co.th', 'Employee'),
+(36, 'saowakhon.k', 'เสาวคนธ์ คงถาวร', 'Forthsmart1', 7, '0888888888', 'saowakhon_k@forthsmart.co.th', 'Employee'),
+(37, 'mattaneeya.r', 'มัทนียา รอดภัย', 'Forthsmart1', 7, '0888888888', 'mattaneeya.r@forthsmart.co.th', 'Employee'),
+(38, 'varunee.m', 'วารุณี มณีนวล', 'Forthsmart1', 7, '0888888888', 'varunee.m@forthsmart.co.th', 'Employee'),
+(39, 'sasitorn.s', 'ศศิธร แสงทอง', 'Forthsmart1', 7, '0888888888', 'sasitorn.s@forthsmart.co.th', 'Employee'),
+(40, 'kanyarat.nu', 'กัญญารัตน์ หนูมาก', 'Forthsmart1', 4, '0888888888', 'kanyarat.nu@forthsmart.co.th', 'Employee'),
+(41, 'watchara.p', 'วัชระ เพ็งหอม', 'Forthsmart1', 4, '0888888888', 'watchara_p@forthsmart.co.th', 'Employee'),
+(42, 'rata.c', 'รตา จันทร์คำ', 'Forthsmart1', 4, '0888888888', 'rata.c@forthsmart.co.th', 'Employee'),
+(43, 'nanthikan.s', 'นันทิกานต์ แซ่เติ๋น', 'Forthsmart1', 4, '0888888888', 'nanthikan.s@forthsmart.co.th', 'Employee'),
+(44, 'pakamas.a', 'ผกามาศ อัสสเมธี', 'Forthsmart1', 4, '0888888888', 'pakamas_a@forthsmart.co.th', 'Employee'),
+(45, 'jirawan.p', 'จิรวรรณ ปานจันทร์', 'Forthsmart1', 11, '0888888888', 'jirawan.p@forthsmart.co.th', 'Employee'),
+(46, 'waravut.s', 'วราวุฒิ สิงห์เชื้อ', 'Forthsmart1', 11, '0888888888', 'waravut_s@forthsmart.co.th', 'Employee'),
+(47, 'phedcharad.p', 'เพชรรัตน์ โพธิทากุล', 'Forthsmart1', 11, '0888888888', 'phedcharad.p@forthsmart.co.th', 'Employee'),
+(48, 'thatsin.d', 'ทรรศิน ดำมุสิก', 'Forthsmart1', 11, '0888888888', 'thatsin.d@forthsmart.co.th', 'Employee'),
+(49, 'sedthawut.m', 'เสฎฐวุฒิ มิลินทสูต', 'Forthsmart1', 11, '0888888888', 'sedthawut.m@forthsmart.co.th', 'Employee'),
+(50, 'weerayut.s', 'วีรยุทธ สุกใส', 'Forthsmart1', 12, '0888888888', 'weerayut.s@forthsmart.co.th', 'Employee'),
+(51, 'peerapong.k', 'พีรพงศ์ กุลกาญจนรัตน์', 'Forthsmart1', 12, '0888888888', 'peerapong.k@forthsmart.co.th', 'Employee'),
+(52, 'augson.t', 'อักษร ตงบุญชัย', 'Forthsmart1', 12, '0888888888', 'augson.t@forthsmart.co.th', 'Employee'),
+(53, 'ananya.l', 'อนัญญา ลภัสธรวรภร', 'Forthsmart1', 12, '0888888888', 'ananya.l@forthsmart.co.th', 'Employee');
 
 -- --------------------------------------------------------
 
@@ -154,7 +173,7 @@ CREATE TABLE `headphones` (
 
 INSERT INTO `headphones` (`hpId`, `toolStatusId`) VALUES
 ('H4010RH00017F', 1),
-('H4010RH0001BE', 1),
+('H4010RH0001BE', 2),
 ('H4010RH0001BS', 1),
 ('H4010RH0001BV', 2),
 ('H4010RH0001BW', 1);
@@ -247,8 +266,29 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`newsId`, `headline`, `image`, `filename`, `upload_time`) VALUES
-(9, 'สวัสดีค้าบบบ ท่านสมาชิก', 'endoface.PNG', 'Resume_Worrameth.pdf', '2021-05-30 16:56:52'),
-(10, 'หัวข้อข่าวสาร', 'YLCwo3b.jpg', 'Resume_Worrameth.pdf', '2021-05-30 17:02:51');
+(11, 'หัวข้อที่หนึ่ง', 'Capture.PNG', 'ROS.pdf', '2021-06-12 15:28:32'),
+(12, 'หัวข้อที่สอง', 'Capture.PNG', 'Python_Exam_WD.pdf', '2021-06-12 16:08:00'),
+(13, 'หัวข้อที่สาม', 'van.jpg', 'Python_Exam_WD.pdf', '2021-06-12 16:08:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `roleId` int(11) NOT NULL,
+  `roleName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`roleId`, `roleName`) VALUES
+(1, 'Employee'),
+(2, 'HR'),
+(3, 'Manager');
 
 -- --------------------------------------------------------
 
@@ -285,7 +325,7 @@ CREATE TABLE `wireless` (
 --
 
 INSERT INTO `wireless` (`wrId`, `toolStatusId`) VALUES
-('TL1J1C002384', 1),
+('TL1J1C002384', 2),
 ('TL1J1JC000191', 2),
 ('TL1J1JC000195', 1),
 ('TL1J1JC000196', 1),
@@ -305,8 +345,7 @@ ALTER TABLE `air_card`
 -- Indexes for table `borrow`
 --
 ALTER TABLE `borrow`
-  ADD PRIMARY KEY (`borrowId`),
-  ADD UNIQUE KEY `borrowItem` (`borrowItem`);
+  ADD PRIMARY KEY (`borrowId`);
 
 --
 -- Indexes for table `department`
@@ -352,6 +391,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`newsId`);
 
 --
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`roleId`);
+
+--
 -- Indexes for table `tool_status`
 --
 ALTER TABLE `tool_status`
@@ -371,7 +416,7 @@ ALTER TABLE `wireless`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -383,7 +428,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `leave_main`
@@ -407,7 +452,13 @@ ALTER TABLE `leave_type`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `newsId` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `roleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tool_status`
