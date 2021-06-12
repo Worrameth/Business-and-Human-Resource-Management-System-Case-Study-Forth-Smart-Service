@@ -33,11 +33,12 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">    
 	<!-- Site CSS -->
-    <link rel="stylesheet" href="../css/styleschedule.css">    
+    <link rel="stylesheet" href="../css/stylesnewss.css">    
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom CSS -->
@@ -51,7 +52,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="index.php">
 					<!-- <img src="img/logo.png" alt="" /> -->
 					<img src="../img/logo.png" width="130" height="130"  alt="" />
 				</a>
@@ -63,7 +64,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 						<li class="nav-item active"><a class="nav-link" href="news.php">กำหนดการ</a></li>
 						<li class="nav-item"><a class="nav-link" href="index.php">หน้าหลัก</a></li>
 						<li class="nav-item"><a class="nav-link" href="borrow.php">ยืม - คืนอุปกรณ์</a></li>
-						<li class="nav-item"><a class="nav-link" href="show_leave.php">แจ้งลางาน</a></li>
+						<li class="nav-item"><a class="nav-link" href="leave.php">แจ้งลางาน</a></li>
 						<li class="nav-item"><a class="nav-link" >ชื่อผู้ใช้งาน : <?php echo $_SESSION['username'];?></a></li>
       			<li class="nav-item"><a class="nav-link" href="../logout.php">ออกจากระบบ</a></li>
 					</ul>
@@ -100,103 +101,19 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 				$sql = $conn->query("SELECT * FROM news ORDER BY newsId DESC Limit 3");
 				while($row=$sql->fetch_assoc()){
 				?>
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-							<div class="row">
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<a href=uploads/<?=$row['filename'];?> download><img style="width:100%; height:200px" class="card-img-top" src="../HR/uploads/<?php echo$row['image']; ?>" alt=""></a>
-										<div class="why-text">
-											<h4></h4>
-											<p href="view_detail.php?id_product=<?php echo$row['newsId']; ?>"><?php echo$row['headline']; ?></p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-										</div>
-									</div>
-								</div>
-								
+				<div class="col-3">
+						<div class="gallery-single fix">
+							<a href=uploads/<?=$row['filename'];?> download><img style="width:100%; height:200px" class="card-img-top" src="../HR/uploads/<?php echo$row['image']; ?>" alt=""></a>
+								<div class="why-text">
+									<h4></h4>
+									<p href="view_detail.php?id_product=<?php echo$row['newsId']; ?>"><?php echo$row['headline']; ?></p>
+								<h6><a href=../HR/uploads/<?=$row['filename'];?> target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
 							</div>
 						</div>
-					</div>
-				</div>				
+				</div>
 				<?php } ?>
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new01.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>ประกาศการอัพเดทเอนตี้ไวรัส</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new02.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>รายชื่อบุคลากรใหม่เดือนพฤษภาคม</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new03.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>การดูแลตัวเองในช่วง โควิด - 19</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
 
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new04.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>ข้อบังคับในการยืม-คืนอุปกรณ์</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new05.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>ข้อบังคับในการแจ้งลางาน</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new06.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>เรียนบุคลากรทุกท่านเกี่ยวกับการใช้โรงจอดรถ</p>
-											<h6><a href=".........................." target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-						</div>
+				
 						<input type="button" value="ดูเพิ่มเติม" class="form-control">
 					
 					
@@ -231,10 +148,22 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 				</div>
 			</div>
 		</div>
-		
+	
 	</footer>
 	<!-- End Footer -->
 	
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
 
 	
 </body>

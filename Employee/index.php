@@ -33,7 +33,7 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-	 <title>Live Dinner Restaurant - Responsive HTML5 Template</title>  
+	 <title>หน้าหลัก</title>  
 	 <meta name="keywords" content="">
 	 <meta name="description" content="">
 	 <meta name="author" content="">
@@ -140,119 +140,6 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 		</div>
 	</div>
 	<!-- End QT -->
-	
-	<!-- Start Menu -->
-	<div class="menu-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="heading-title text-center">
-						<h2>ข่าวสาร</h2>
-						<p></p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row inner-menu-box">
-				<div class="col-2">
-					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					</div>
-				</div>
-				
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new01.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new02.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new03.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new04.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new05.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="../img/new06.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4></h4>
-											<p>-------------------------------------------</p>
-											<h6><a href="-------------------------------------------" target="_blank" style="color: white;">อ่านเพิ่มเติม...</a></h6>
-
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-						</div>
-	
-						<a href="-------------------------------------------" class="btn form-control">ดูเพิ่มเติม</a>
-					
-					
-							
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-	<!-- End Menu -->
-
-								
 
 	<!-- Start Customer Reviews -->
 	<div class="customer-reviews-box">
@@ -270,59 +157,26 @@ if (!$_SESSION["username"] || $_SESSION["role"] != "Employee"){  //check session
 						<div class="carousel-inner mt-4">
 							<div class="carousel-item text-center active">
 								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="../img/Q_1.PNG" alt="">
+								<a href=aircard.php><img class="d-block w-100 rounded-circle" src="../img/AC.PNG" alt="">
 								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">คจาคาร์</strong></h5>
+								<a href=aircard.php><h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">AirCard</strong></h5>
 								<h6 class="text-dark m-0">&nbsp;</h6>
 								<h3>------------------------------</h3>
 							</div>
 							<div class="carousel-item text-center">
 								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="../img/Q_2.PNG" alt="">
+								<a href=HeadPhones.php><img class="d-block w-100 rounded-circle" src="../img/HP.PNG" alt="">
 								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">นูเวอร์</strong></h5>
+								<a href=HeadPhones.php><h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">HeadPhones</strong></h5>
 								<h6 class="text-dark m-0">&nbsp;</h6>
 								<h3>------------------------------</h3>
 							</div>
 							
 							<div class="carousel-item text-center">
 								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="../img/Q_3.PNG" alt="">
+								<a href=Wireless.php><img class="d-block w-100 rounded-circle" src="../img/WR.PNG" alt="">
 								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">คารานด้า</strong></h5>
-								<h6 class="text-dark m-0">&nbsp;</h6>
-								<h3>------------------------------</h3>
-							</div>
-							<div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="../img/Q_4.PNG" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">คุทูม</strong></h5>
-								<h6 class="text-dark m-0">&nbsp;</h6>
-								<h3>------------------------------ </h3>
-							</div>
-							<div class="carousel-item text-center">
-                <div class="img-box p-1 border rounded-circle m-auto">
-                  <img class="d-block w-100 rounded-circle" src="img/Q_5.PNG" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">โอฟิน</strong></h5>
-								<h6 class="text-dark m-0">&nbsp;</h6>
-								<h3>------------------------------</h3>
-							</div>
-                            
-              <div class="carousel-item text-center">
-                <div class="img-box p-1 border rounded-circle m-auto">
-                  <img class="d-block w-100 rounded-circle" src="../img/Q_6.PNG" alt="">
-                </div>
-                <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">เบลล์</strong></h5>
-                <h6 class="text-dark m-0">&nbsp;</h6>
-                <h3>------------------------------</h3>
-              </div>
-              <div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="../img/Q_7.PNG" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">กามอส</strong></h5>
+								<a href=Wireless.php><h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Wireless</strong></h5></a>
 								<h6 class="text-dark m-0">&nbsp;</h6>
 								<h3>------------------------------</h3>
 							</div>
