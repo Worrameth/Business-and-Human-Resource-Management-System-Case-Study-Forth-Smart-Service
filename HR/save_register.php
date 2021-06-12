@@ -12,8 +12,6 @@ include('../connect.php');
 	$sql = "INSERT INTO employee(username,name,password,departmentId,email,phone,role)
 			 VALUES('$username','$name','$password','$departmentId','$email','$phone','$role')";
 
-
-
 	$result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
 	//ปิดการเชื่อมต่อ database
